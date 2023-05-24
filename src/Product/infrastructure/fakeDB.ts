@@ -7,26 +7,15 @@ export class FakeDB implements ProductRepository{
         const connection = await mysql.createConnection({host:'localhost', user: 'root', password:"Valiep04", database: 'products',namedPlaceholders: true});
 
         const [rows]: any  = await connection.execute('SELECT * FROM products WHERE id = ?', productId);
-        
-        
         console.log("Estamos imprimiendo las rows :)", rows[0].name);
-        
-       
-      
-
         if(!rows[0]){
             return null;
         }else{
-            
             let identifier:string = rows[0].id;
             let nameObject:string = rows[0].name;
             let descriptionObject:string = rows[0].description;
             console.log("hola"); 
             return new Product(identifier, nameObject, descriptionObject);
         }
-
-
-
-
     }
 }
