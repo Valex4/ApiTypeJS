@@ -1,27 +1,28 @@
 import { Product } from "../domain/Product";
 import { ProductRepository } from "../domain/product-repository";
-
-const products: Product[] = [    
-    { 
-        id:"1",
-        name:"Chocolate abuelita",
-        description:"Chocolate fascninante"
-    },
-    {
-        id:"2",
-        name:"Gansito marinela",
-        description:"Excelente sabor"
-    }
-];
+import * as mysql from 'mysql2/promise';
 
 export class FakeDB implements ProductRepository{
     async getById(productId: string): Promise<Product | null> {
-        const productFound = products.find((product) => product.id === productId);
+        const connection = await mysql.createConnection({host:'localhost', user: 'root', password:"Valiep04", database: 'products',namedPlaceholders: true});
 
-        if(!productFound){
+        const [rows]: any  = await connection.execute('SELECT * FROM products WHERE id = ?', productId);
+        
+        
+        console.log("Estamos imprimiendo las rows :)", rows[0].name);
+        
+       
+      
+
+        if(!rows[0]){
             return null;
         }else{
-            return new Product(productFound.id, productFound.name, productFound.description);
+            
+            let identifier:string = rows[0].id;
+            let nameObject:string = rows[0].name;
+            let descriptionObject:string = rows[0].description;
+            console.log("hola"); 
+            return new Product(identifier, nameObject, descriptionObject);
         }
 
 
