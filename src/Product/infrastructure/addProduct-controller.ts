@@ -6,9 +6,9 @@ export class AddProductController{
     }
     async run(req: Request, res: Response) {
         const productInfo = req.body;
-        let {id, name, description} = req.body;
+        let {name, description} = req.body;
         console.log("Estamos recibiendo la informacion en el controlador: " + productInfo.name)
-        await this.add.addProduct(id, name, description);
-        res.status(200).send("Estamos recibiendo la informacion");
+        let newProduct= await this.add.addProduct(name, description);
+        res.status(200).json(newProduct);
       }
 }

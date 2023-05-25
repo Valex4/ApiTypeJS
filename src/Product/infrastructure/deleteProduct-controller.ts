@@ -9,6 +9,6 @@ export class DeleteProductController{
         console.log("Estamos recibiendo la informacion en el controlador en eliminar: " + id)
         const resultado = await this.delProduct.deleteProduct(id);
         console.log("Imprimiendo el resultaod: ", resultado)
-        res.status(200).send("Estamos recibiendo la informacion");
+        res.status(200).send("Eliminado correctamente");
       }
 }

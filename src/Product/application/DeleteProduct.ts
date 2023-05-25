@@ -1,7 +1,7 @@
-import { DeleeProduct } from "../infrastructure/deleteProdd";
+import { FakeDB } from "../infrastructure/fakeDB";
 export class DeleteProduct{
 
-    constructor(private readonly dProduct: DeleeProduct){
+    constructor(private readonly dProduct: FakeDB){
     }
 
     async deleteProduct(idProduct: string){

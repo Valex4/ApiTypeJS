@@ -3,19 +3,19 @@ import { ProductController } from "./product-controller";
 import { FakeDB } from "./fakeDB";
 import { AddProductController } from "./addProduct-controller";
 import { AddProduct } from "../application/AddProduct";
-import { AddToDB } from "./add-to-DB";
 import { DeleteProduct } from "../application/DeleteProduct";
-import { DeleeProduct } from "./deleteProdd";
 import { DeleteProductController } from "./deleteProduct-controller";
+import { getAllProducts } from "../application/getAllProducts";
+import { getAllC } from "./getAll-controller";
 
-const deletProduct= new DeleeProduct()
 const fakeDB = new FakeDB();
-const addToDB = new AddToDB();
-export const deleteProduct = new DeleteProduct(deletProduct)
+export const getAll = new getAllProducts(fakeDB);
+export const getAllProductos = new getAllC(getAll); 
+export const deleteProduct = new DeleteProduct(fakeDB)
 export const deleteProductController = new DeleteProductController(deleteProduct);
 export const getInfoProduct = new GetInfoProduct(fakeDB);
 export const productController = new ProductController(getInfoProduct);
-export const addProductNew =  new AddProduct(addToDB);
+export const addProductNew =  new AddProduct(fakeDB);
 export const addProductController1 = new AddProductController(addProductNew);
 
 

@@ -6,7 +6,13 @@ export class ProductController {
   async run(req: Request, res: Response) {
     const productId = req.params.id;
     console.log("REcibiendo en el controlador el id: ", productId)
-    await this.getInfoProduct.getInfo(productId);
-    res.status(200).send("Hola tus datos ya estan listos");
+    const produ = await this.getInfoProduct.getInfo(productId);
+    console.log("Imprimiendo el produ: ", produ)
+    if(produ == null){
+      res.status(404).send("Usuario no encontrado");
+    }else{
+      res.status(200).json(produ);
+    }
+    
   }
 }

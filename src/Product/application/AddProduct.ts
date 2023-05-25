@@ -1,16 +1,17 @@
-import { Product } from "../domain/Product";
-import { AddToDB } from "../infrastructure/add-to-DB"
+import { FakeDB } from "../infrastructure/fakeDB";
 export class AddProduct{
     constructor(
-        private readonly addToDB: AddToDB
+        private readonly addToDB: FakeDB
        
     ){}
 
-    async addProduct(id:string, name:string, description:string){
-       const productN: Product = new Product(id, name, description)
-       const newProduct = await this.addToDB.addProduct(productN);
+    async addProduct(name:string, description:string){
+       
+       const newProduct = await this.addToDB.addProduct(name, description);
         console.log(newProduct);
-        console.log("Nos esta llegando la info al application: ", productN) 
+        console.log("Nos esta llegando la info al application: ") 
+
+        return newProduct;
     }
 
     
