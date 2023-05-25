@@ -7,8 +7,6 @@ export class AddProduct{
     ){}
 
     async addProduct(id:string, name:string, description:string){
-       /*  const newProduct = await this.addProducts.addProduct(product) */
-     
        const productN: Product = new Product(id, name, description)
        const newProduct = await this.addToDB.addProduct(productN);
         console.log(newProduct);
