@@ -1,12 +1,12 @@
 import { GetInfoProduct } from "../application/GetInfoProduct";
-import { ProductController } from "./product-controller";
+import { ProductController } from "./controllers/product-controller";
 import { FakeDB } from "./fakeDB";
-import { AddProductController } from "./addProduct-controller";
+import { AddProductController } from "./controllers/addProduct-controller";
 import { AddProduct } from "../application/AddProduct";
 import { DeleteProduct } from "../application/DeleteProduct";
-import { DeleteProductController } from "./deleteProduct-controller";
+import { DeleteProductController } from "./controllers/deleteProduct-controller";
 import { getAllProducts } from "../application/getAllProducts";
-import { getAllC } from "./getAll-controller";
+import { getAllC } from "./controllers/getAll-controller";
 
 const fakeDB = new FakeDB();
 export const getAll = new getAllProducts(fakeDB);

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getAllProducts } from "../application/getAllProducts";
+import { getAllProducts } from "../../application/getAllProducts";
 export class getAllC {
   constructor(private readonly getAllP: getAllProducts){
   }
@@ -7,7 +7,6 @@ export class getAllC {
 
     const produ = await this.getAllP.getAllProducts();
     console.log("Imprimiendo el produ: ", produ)
-    
     if(produ == null){
       res.status(404).send("Usuario no encontrado");
     }else{

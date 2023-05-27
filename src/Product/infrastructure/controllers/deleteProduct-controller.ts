@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { DeleteProduct } from "../application/DeleteProduct";
+import { DeleteProduct } from "../../application/DeleteProduct";
 export class DeleteProductController{
     constructor(private readonly delProduct: DeleteProduct){
         
